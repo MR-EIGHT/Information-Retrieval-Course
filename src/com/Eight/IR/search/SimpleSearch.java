@@ -10,10 +10,11 @@ public class SimpleSearch {
 
 
     public static void main(String[] args) throws IOException, URISyntaxException {
-        // TODO get .txt files in resources folder nad put it in texts
 
 
         List<String> bookNames = new ArrayList<>();
+        HashMap<String, String> books = new HashMap<>();
+
         File[] files = new File(SimpleSearch.class.getResource("/txt").toURI()).listFiles();
         if (files == null) {
             throw new NullPointerException("There are no files in resources/txt path!");
@@ -24,8 +25,6 @@ public class SimpleSearch {
             bookNames.add(name);
         }
 
-
-        HashMap<String, String> books = new HashMap<>();
 
         for (String name : bookNames) {
             InputStream stream = SimpleSearch.class.getResource("/txt/" + name).openStream();
