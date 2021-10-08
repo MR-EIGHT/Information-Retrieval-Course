@@ -21,10 +21,13 @@ public class PostingList {
     public static void main(String[] args) {
         PostingList l1 = new PostingList(1, 3, 5, 8, 9);
         System.out.println(l1);
-        PostingList l2 = new PostingList(0, 3, 8, 15, 20);
+        PostingList l2 = new PostingList(0, 3, 8, 15, 20, 30);
         System.out.println(l2);
         System.out.println();
         System.out.println(l1.and(l2));
+        System.out.println(l1.or(l2));
+
+
     }
 
     public void add(int id) {
@@ -63,4 +66,44 @@ public class PostingList {
     }
 
 
+    public PostingList or(PostingList otherList) {
+        PostingList result = new PostingList();
+        int i = 0, j = 0;
+        int max = Math.max(size(), otherList.size());
+
+        while (i < size() && j < otherList.size()) {
+            int a = docIds.get(i);
+            int b = otherList.docIds.get(j);
+
+
+            if (a < b) {
+                result.add(a);
+                i++;
+            } else if (b < a) {
+                result.add(b);
+                j++;
+            } else {
+                result.add(a);
+                i++;
+                j++;
+            }
+
+
+        }
+
+
+        if (i < size())
+            for (; i < size(); i++)
+                result.add(docIds.get(i));
+
+
+        else if (j < size())
+            for (; j < otherList.size(); j++)
+                result.add(otherList.docIds.get(j));
+
+
+        return result;
+
+
+    }
 }
