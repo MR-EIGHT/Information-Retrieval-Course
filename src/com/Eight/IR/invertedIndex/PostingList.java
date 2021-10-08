@@ -19,11 +19,11 @@ public class PostingList {
     }
 
     public static void main(String[] args) {
-        PostingList l1 = new PostingList(1, 3, 5, 8, 9);
+        PostingList l1 = new PostingList(1, 3, 5, 8, 9, 31, 42, 50);
         System.out.println(l1);
         PostingList l2 = new PostingList(0, 3, 8, 15, 20, 30);
-        System.out.println(l2);
-        System.out.println();
+        System.out.println(l2 + "\n");
+
         System.out.println(l1.and(l2));
         System.out.println(l1.or(l2));
 
@@ -69,7 +69,6 @@ public class PostingList {
     public PostingList or(PostingList otherList) {
         PostingList result = new PostingList();
         int i = 0, j = 0;
-        int max = Math.max(size(), otherList.size());
 
         while (i < size() && j < otherList.size()) {
             int a = docIds.get(i);
