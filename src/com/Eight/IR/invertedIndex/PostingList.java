@@ -12,23 +12,17 @@ public class PostingList {
 
     }
 
+    public List<Integer> getDocIds() {
+        return docIds;
+    }
+
     PostingList(int... ids) {
         for (int id : ids) {
             docIds.add(id);
         }
     }
 
-    public static void main(String[] args) {
-        PostingList l1 = new PostingList(1, 3, 5, 8, 9, 31, 42, 50);
-        System.out.println(l1);
-        PostingList l2 = new PostingList(0, 3, 8, 15, 20, 30);
-        System.out.println(l2 + "\n");
 
-        System.out.println(l1.and(l2));
-        System.out.println(l1.or(l2));
-
-
-    }
 
     public void add(int id) {
         docIds.add(id);

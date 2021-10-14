@@ -15,6 +15,14 @@ public class Document {
         this.body = body;
     }
 
+    @Override
+    public String toString() {
+        return "Document{" +
+                "docId=" + docId +
+                ", name='" + name + '\'' +
+                '}';
+    }
+
     public static AtomicInteger getLastId() {
         return lastId;
     }
@@ -32,7 +40,5 @@ public class Document {
     }
 
 
-    public static void main(String[] args) {
 
-    }
 }
